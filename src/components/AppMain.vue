@@ -8,42 +8,31 @@ export default {
             state
         }
     },
-    mounted() {
-        const config = {
-            method: 'get',
-            url: 'https://api.themoviedb.org/3/search/movie',
-            params: {
-                api_key: 'e48d16052578167c382756ce83bc5c4a',
-                query: 'tomb raider'
-            }
-        }
-
-        axios(config)
-            .then(response => {
-                console.log(response.data);
-                this.state.characters = response.data.results
-            })
-            .catch(error => {
-                console.log(error);
-                this.state.error = error.message
-            })
-    },
-    /*methods: {
-        searchByName() {
-            const searchName = this.state.searchName
-            const newUrl = `https://api.themoviedb.org/3/discover/movie?api_key=e48d16052578167c382756ce83bc5c4a&query=tomb raider&with_title=${searchName}`
-            console.log(newUrl);
-            axios.get(newUrl)
+    methods: {
+        callApi(url) {
+            axios.get(url)
                 .then(response => {
-                    this.state.characters = response.data
-
+                    console.log(response);
+                    this.state.characters = response.data.results
+                    console.log(this.state.characters);
                 })
                 .catch(err => {
-                    console.log(err);
+                    this.state.error = err.message
+                    console.log(this.state.error);
+
                 })
         }
-    }*/
-
+    },
+    mounted() {
+        if (this.state.searchName !== '') {
+            const config = {
+                method: 'get',
+                url: `https://api.themoviedb.org/3/search/movie?api_key=e48d16052578167c382756ce83bc5c4a&query=${this.state.searchName}`
+            }
+            this.callApi(config.url)
+            //console.log(this.callApi(config.url));
+        }
+    }
 }
 </script>
 <template>
@@ -54,7 +43,7 @@ export default {
                 <button>Search</button>
             </div>
             <div class="movies mt-5">
-                <div class="movie " v-for="(character, i) in state.characters" v-show="state.searchName !== ''">
+                <div class="movie " v-for="(character, i) in state.characters">
                     <ul>
                         <li>
                             <p>
