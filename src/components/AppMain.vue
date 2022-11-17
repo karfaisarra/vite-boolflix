@@ -1,10 +1,12 @@
 <script>
 import MoviesList from './moviesList.vue';
-import { state } from '../state.js'
+import { state } from '../state.js';
+import SeriesList from './SeriesList.vue';
 export default {
     name: 'AppMain',
     components: {
         MoviesList,
+        SeriesList
     },
     data() {
         return {
@@ -16,8 +18,9 @@ export default {
 </script>
 <template>
     <main>
-        <div class="container py-5">
+        <div class="container d-flex justify-content-between py-5">
             <MoviesList />
+            <SeriesList />
         </div>
     </main>
 </template>
