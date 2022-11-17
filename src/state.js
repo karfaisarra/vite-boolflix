@@ -2,6 +2,7 @@ import { reactive } from 'vue'
 import axios from 'axios'
 export const state = reactive({
     movies: null,
+    series: null,
     error: null,
     bandiere: [
         {
@@ -52,7 +53,15 @@ export const state = reactive({
         params: {
             api_key: 'e48d16052578167c382756ce83bc5c4a',
             query: ''
-        }
+        },
+    },
+    tvShow: {
+        method: 'get',
+        url: 'https://api.themoviedb.org/3/search/tv',
+        params: {
+            api_key: 'e48d16052578167c382756ce83bc5c4a',
+            query: 'm'
+        },
     },
     callApi() {
         axios(state.config)
@@ -65,5 +74,15 @@ export const state = reactive({
                 state.error = err.message
                 //console.log(this.state.error);
             })
+        axios(state.tvShow)
+            .then(response => {
+                state.series = response.data.results
+                console.log(state.series);
+            })
+            .catch(err => {
+                state.error = err.message
+                //console.log(this.state.error);
+            })
+        state.config.params.query = ''
     },
 })
