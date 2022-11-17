@@ -20,8 +20,8 @@ export default {
                     <p>
                         <strong>Titolo Originale:</strong> {{ movie.original_title }}
                     </p>
-                    <p>
-                        <strong>Lingua:</strong> {{ movie.original_language }}
+                    <p v-show="movie.original_language == bandiera.language" v-for="bandiera in state.bandiere">
+                        <strong>Lingua:</strong> <img width="50" :src="bandiera.flag" alt="">
                     </p>
                     <p>
                         <strong>Voto:</strong> {{ movie.vote_average }}

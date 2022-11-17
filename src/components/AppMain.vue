@@ -1,10 +1,10 @@
 <script>
-import moviesList from './moviesList.vue';
+import MoviesList from './moviesList.vue';
 import { state } from '../state.js'
 export default {
     name: 'AppMain',
     components: {
-        moviesList,
+        MoviesList,
     },
     data() {
         return {
@@ -17,7 +17,7 @@ export default {
 <template>
     <main>
         <div class="container py-5">
-            <moviesList />
+            <MoviesList />
         </div>
     </main>
 </template>

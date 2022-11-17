@@ -10,9 +10,9 @@ export default {
 }
 </script>
 <template>
-    <div class="container">
+    <div class="container mt-5">
         <div class="searchbar">
-            <input type="text" v-model="state.searchName" @keyup.enter="$emit('searchMovies')">
+            <input type="text" v-model="state.config.params.query" @keyup.enter="$emit('searchMovies')">
             <button @click="$emit('searchMovies')">Search</button>
         </div>
     </div>
