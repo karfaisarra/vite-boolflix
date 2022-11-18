@@ -16,7 +16,7 @@ export default {
 </script>
 <template>
     <main>
-        <div class="container py-5">
+        <div class="container-fluid p-5">
             <ResultsList />
         </div>
     </main>

@@ -10,10 +10,8 @@ export default {
 }
 </script>
 <template>
-    <div class="container mt-5">
-        <div class="searchbar">
-            <input type="text" v-model="state.params.query" @keyup.enter="$emit('searchMovies')">
-            <button @click="$emit('searchMovies')">Search</button>
-        </div>
+    <div class="searchbar d-flex gap-3">
+        <input type="text" v-model="state.params.query" @keyup.enter="$emit('searchMovies')" class="form-control w-75">
+        <button @click="$emit('searchMovies')" class="btn btn-primary">Search</button>
     </div>
 </template>

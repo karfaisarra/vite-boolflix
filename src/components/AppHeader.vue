@@ -16,7 +16,10 @@ export default {
 </script>
 <template>
     <header>
-        <SearchBox @searchMovies="state.callApi" />
+        <div class="d-flex justify-content-between align-items-center p-5">
+            <img src="../assets/img/logo.png" alt="">
+            <SearchBox @searchMovies="state.callApi" />
+        </div>
     </header>
 </template>
 
