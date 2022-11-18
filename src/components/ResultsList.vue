@@ -6,6 +6,12 @@ export default {
         return {
             state
         }
+    },
+    methods: {
+        getImages(urlImgApi) {
+            const urlBase = 'https://image.tmdb.org/t/p/w342'
+            return urlBase + urlImgApi
+        }
     }
 }
 </script>
@@ -14,13 +20,14 @@ export default {
         <div class="movie " v-for="(movie, i) in state.allResults.movies">
             <ul>
                 <li>
-                    Titolo: {{ movie.title }}
+                    Titolo: {{ movie.title }} <br>
                     Titolo Originale: {{ movie.original_title }}
                     <div class="lingua" v-for="bandiera in state.bandiere"
                         v-show="movie.original_language == bandiera.language">
                         Lingua: <img width="30" :src="bandiera.flag" alt="">
                     </div>
-                    Voto: {{ movie.vote_average }}
+                    Voto: {{ movie.vote_average }} <br>
+                    <img :src="getImages(movie.backdrop_path)" alt="">
                 </li>
             </ul>
         </div>
@@ -29,13 +36,14 @@ export default {
         <div class="movie " v-for="(serie, i) in state.allResults.tv">
             <ul>
                 <li>
-                    Titolo serie: {{ serie.name }}
+                    Titolo serie: {{ serie.name }} <br>
                     Titolo Originale serie: {{ serie.original_name }}
                     <div class="lingua" v-for="bandiera in state.bandiere"
                         v-show="serie.original_language == bandiera.language">
                         Lingua: <img width="30" :src="bandiera.flag" alt="">
                     </div>
-                    Voto: {{ serie.vote_average }}
+                    Voto: {{ serie.vote_average }} <br>
+                    <img :src="getImages(serie.backdrop_path)" alt="">
                 </li>
             </ul>
         </div>

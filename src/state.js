@@ -53,17 +53,6 @@ export const state = reactive({
         api_key: 'e48d16052578167c382756ce83bc5c4a',
         query: ''
     },
-    /*    config: {
-           method: 'get',
-           url: 'https://api.themoviedb.org/3/search/movie',
-           params: state.params
-       },
-       tvShow: {
-           method: 'get',
-           url: 'https://api.themoviedb.org/3/search/tv',
-           params: state.params
-       }, */
-
     callApi() {
 
         const flims = {
