@@ -17,7 +17,7 @@ export default {
 </script>
 <template>
     <div class="movies mt-5">
-        <div class="movie " v-for="(movie, i) in state.allResults.movies">
+        <div class="movie " v-for="movie in state.allResults.movies">
             <ul>
                 <li>
                     Titolo: {{ movie.title }} <br>
@@ -33,7 +33,7 @@ export default {
         </div>
     </div>
     <div class="series">
-        <div class="movie " v-for="(serie, i) in state.allResults.tv">
+        <div class="serie " v-for="serie in state.allResults.tv">
             <ul>
                 <li>
                     Titolo serie: {{ serie.name }} <br>
