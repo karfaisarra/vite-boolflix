@@ -1,8 +1,10 @@
 import { reactive } from 'vue'
 import axios from 'axios'
 export const state = reactive({
-    movies: null,
-    series: null,
+    allResults: {
+        movies: null,
+        tv: null
+    },
     error: null,
     bandiere: [
         {
@@ -47,42 +49,54 @@ export const state = reactive({
         }
 
     ],
-    config: {
-        method: 'get',
-        url: 'https://api.themoviedb.org/3/search/movie',
-        params: {
-            api_key: 'e48d16052578167c382756ce83bc5c4a',
-            query: ''
-        },
+    params: {
+        api_key: 'e48d16052578167c382756ce83bc5c4a',
+        query: ''
     },
-    tvShow: {
-        method: 'get',
-        url: 'https://api.themoviedb.org/3/search/tv',
-        params: {
-            api_key: 'e48d16052578167c382756ce83bc5c4a',
-            query: 'm'
-        },
-    },
+    /*    config: {
+           method: 'get',
+           url: 'https://api.themoviedb.org/3/search/movie',
+           params: state.params
+       },
+       tvShow: {
+           method: 'get',
+           url: 'https://api.themoviedb.org/3/search/tv',
+           params: state.params
+       }, */
+
     callApi() {
-        axios(state.config)
+
+        const flims = {
+            method: 'get',
+            url: 'https://api.themoviedb.org/3/search/movie',
+            params: state.params
+        }
+        const tvShow = {
+            method: 'get',
+            url: 'https://api.themoviedb.org/3/search/tv',
+            params: state.params
+        }
+        axios(flims)
             .then(response => {
                 //console.log(response);
-                state.movies = response.data.results
-                //console.log(this.state.movies);
+                state.allResults.movies = response.data.results
+                console.log(state.allResults.movies);
             })
             .catch(err => {
                 state.error = err.message
                 //console.log(this.state.error);
             })
-        axios(state.tvShow)
+        axios(tvShow)
             .then(response => {
-                state.series = response.data.results
-                console.log(state.series);
+                state.allResults.tv = response.data.results
+                console.log(state.allResults.tv);
             })
             .catch(err => {
                 state.error = err.message
                 //console.log(this.state.error);
             })
-        state.config.params.query = ''
+
+        // TODO
+        state.params.query = ''
     },
 })

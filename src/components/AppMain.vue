@@ -1,26 +1,23 @@
 <script>
-import MoviesList from './moviesList.vue';
+import ResultsList from './ResultsList.vue';
 import { state } from '../state.js';
-import SeriesList from './SeriesList.vue';
+
 export default {
     name: 'AppMain',
     components: {
-        MoviesList,
-        SeriesList
+        ResultsList,
     },
     data() {
         return {
             state
         }
     },
-
 }
 </script>
 <template>
     <main>
-        <div class="container d-flex justify-content-between py-5">
-            <MoviesList />
-            <SeriesList />
+        <div class="container py-5">
+            <ResultsList />
         </div>
     </main>
 </template>

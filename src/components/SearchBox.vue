@@ -12,7 +12,7 @@ export default {
 <template>
     <div class="container mt-5">
         <div class="searchbar">
-            <input type="text" v-model="state.config.params.query" @keyup.enter="$emit('searchMovies')">
+            <input type="text" v-model="state.params.query" @keyup.enter="$emit('searchMovies')">
             <button @click="$emit('searchMovies')">Search</button>
         </div>
     </div>
