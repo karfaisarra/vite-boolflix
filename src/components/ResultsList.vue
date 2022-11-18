@@ -84,7 +84,7 @@ export default {
 
         .img_top {
             width: 100%;
-            height: 400px;
+            height: 450px;
         }
 
         .body_bottom {
